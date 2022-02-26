@@ -14,7 +14,7 @@ const periodTemplate = {
   }
 };
 
-export default (token) => {
+export default token => {
   const options = {
     body: JSON.stringify(periodTemplate),
     method: 'POST',
@@ -25,7 +25,7 @@ export default (token) => {
   };
 
   return new Promise((resolve, reject) =>
-    fetch('/api/periods', options)
+    fetch(`${process.env.REACT_APP_PUBLIC_URL}/periods`, options)
       .then(res => (res.status !== 201 ? reject(res) : res.json()))
       .then(newPeriod => resolve(Immutable.fromJS(newPeriod)))
       .catch(err => reject(err)));

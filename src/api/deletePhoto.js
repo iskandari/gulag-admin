@@ -7,7 +7,7 @@ export default (token, photoId) => {
   };
 
   return new Promise((resolve, reject) =>
-    fetch(`/api/photos/${photoId}`, options)
+    fetch(`${process.env.REACT_APP_PUBLIC_URL}/photos/${photoId}`, options)
       .then(res => (res.status !== 204 ? reject(res) : resolve(res)))
       .catch(error => reject(error)));
 };

@@ -19,7 +19,7 @@ export default (token, prisonId, photos) => {
   };
 
   return new Promise((resolve, reject) =>
-    fetch('/api/photos', options)
+    fetch(`${process.env.REACT_APP_PUBLIC_URL}/photos`, options)
       .then(res => (res.status !== 200 ? reject(res) : res.json()))
       .then(newPhoto => resolve(Immutable.fromJS(newPhoto)))
       .catch(err => reject(err)));

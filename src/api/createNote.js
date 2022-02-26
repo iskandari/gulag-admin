@@ -10,12 +10,9 @@ export default (token, prisonId, note) => {
     body: JSON.stringify({ note, prison_id: prisonId })
   };
 
-  return (
-    new Promise((resolve, reject) => (
-      fetch('/api/public/notes/id/', options)
-        .then(res => (res.status !== 200 ? reject(res) : res.json()))
-        .then(([newNote]) => resolve(Immutable.fromJS(newNote)))
-        .catch(err => reject(err))
-    ))
-  );
+  return new Promise((resolve, reject) =>
+    fetch(`${process.env.REACT_APP_PUBLIC_URL}/public/notes/id/`, options)
+      .then(res => (res.status !== 200 ? reject(res) : res.json()))
+      .then(([newNote]) => resolve(Immutable.fromJS(newNote)))
+      .catch(err => reject(err)));
 };

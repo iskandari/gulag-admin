@@ -21,6 +21,8 @@ import authReducer from './components/App/authReducer';
 import uiReducer from './components/App/uiReducer';
 import dataReducer from './components/App/dataReducer';
 
+require('dotenv').config();
+
 let middleware;
 const sagaMiddleware = createSagaMiddleware();
 const history = createHistory();

@@ -5,21 +5,22 @@ export default token => {
 
   return new Promise((resolve, reject) =>
     Promise.all([
-      fetch('/api/camps', options).then(
+      fetch(`${process.env.REACT_APP_PUBLIC_URL}/camps`, options).then(
         res => (res.status !== 200 ? reject(res) : res.json())
       ),
-      // fetch('/api/uploads.json', options)
+      // fetch(`${process.env.REACT_APP_PUBLIC_URL}/api/uploads.json', options)
       //   .then(res => (res.status !== 200 ? reject(res) : res.json())),
-      fetch('/api/camp-activities', options).then(
+      fetch(
+        `${process.env.REACT_APP_PUBLIC_URL}/camp-activities`,
+        options
+      ).then(res => (res.status !== 200 ? reject(res) : res.json())),
+      fetch(`${process.env.REACT_APP_PUBLIC_URL}/camp-regions`, options).then(
         res => (res.status !== 200 ? reject(res) : res.json())
       ),
-      fetch('/api/camp-regions', options).then(
+      fetch(`${process.env.REACT_APP_PUBLIC_URL}/camp-types`, options).then(
         res => (res.status !== 200 ? reject(res) : res.json())
       ),
-      fetch('/api/camp-types', options).then(
-        res => (res.status !== 200 ? reject(res) : res.json())
-      ),
-      fetch('/api/periods', options).then(
+      fetch(`${process.env.REACT_APP_PUBLIC_URL}/periods`, options).then(
         res => (res.status !== 200 ? reject(res) : res.json())
       )
     ])

@@ -9,7 +9,7 @@ export default (token, id, campId) => {
   };
 
   return new Promise((resolve, reject) =>
-    fetch(`/api/camp-statistics/${id}`, options)
+    fetch(`${process.env.REACT_APP_PUBLIC_URL}/camp-statistics/${id}`, options)
       .then(res => (res.status !== 200 ? reject(res) : resolve(res.json())))
       .catch(error => reject(error)));
 };

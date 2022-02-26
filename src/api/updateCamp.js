@@ -11,7 +11,10 @@ export default (token, newCamp) => {
   };
 
   return new Promise((resolve, reject) =>
-    fetch(`/api/camps/${newCamp.get('id')}`, options)
+    fetch(
+      `${process.env.REACT_APP_PUBLIC_URL}/camps/${newCamp.get('id')}`,
+      options
+    )
       .then(res => (res.status !== 200 ? reject(res) : res.json()))
       .then(submittedPrison => resolve(Immutable.fromJS(submittedPrison)))
       .catch(err => reject(err)));

@@ -7,7 +7,7 @@ export default (token, id) => {
   };
 
   return new Promise((resolve, reject) =>
-    fetch(`/api/camp-location/${id}`, options)
+    fetch(`${process.env.REACT_APP_PUBLIC_URL}/camp-location/${id}`, options)
       .then(res => (res.status !== 200 ? reject(res) : resolve(res.json())))
       .catch(error => reject(error)));
 };

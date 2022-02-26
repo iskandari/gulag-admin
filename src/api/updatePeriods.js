@@ -11,7 +11,7 @@ export default (token, periods) => {
   };
 
   return new Promise((resolve, reject) =>
-    fetch('/api/periods', options)
+    fetch(`${process.env.REACT_APP_PUBLIC_URL}/periods`, options)
       .then(res => (res.status !== 201 ? reject(res) : res.json()))
       .then(updatedPeriods => resolve(Immutable.fromJS(updatedPeriods)))
       .catch(error => reject(error)));

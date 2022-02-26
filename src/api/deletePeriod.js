@@ -7,7 +7,7 @@ export default (token, id) => {
   };
 
   return new Promise((resolve, reject) =>
-    fetch(`/api/periods/${id}`, options)
+    fetch(`${process.env.REACT_APP_PUBLIC_URL}/periods/${id}`, options)
       .then(res => (res.status !== 200 ? reject(res) : resolve(res)))
       .catch(error => reject(error)));
 };
